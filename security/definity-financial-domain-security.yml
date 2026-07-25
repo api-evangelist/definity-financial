@@ -1,0 +1,92 @@
+generated: '2026-07-25'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.definityfinancial.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 19 14:22:17 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.economical.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 12 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31557600
+- host: www.sonnet.ca
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 16 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 3600
+- host: www.petsecure.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb  6 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.definity.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 31 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  note: Partner/production gateway. Imperva-fronted; HTTP 404 with empty body to all anonymous paths.
+- host: broker.economical.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  6 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+  note: Docebo SaaS learning management system for broker training (CNAME economical.docebosaas.com).
+domains:
+- domain: definityfinancial.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: economical.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: sonnet.ca
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: petsecure.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: definity.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+  note: >-
+    SPF record names the third-party services fronting Definity's mail and broker estate,
+    including spf.acturis.com (Acturis broker management system), docebosaas.com (broker
+    LMS), service-now.com, salesforce.com, sendgrid.net and spf.protection.outlook.com.
+findings:
+- No domain in the estate publishes DNSSEC.
+- No domain in the estate publishes a CAA record.
+- All five domains publish SPF with a -all hard fail.
+- >-
+  DMARC is published everywhere but four of five domains sit at p=none (monitor only);
+  only petsecure.com enforces at p=quarantine. No domain reaches p=reject.
+- All six probed hosts serve TLS 1.3 with HSTS; only broker.economical.com sets includeSubDomains.
+extended_probe:
+  method: probed
+  source: >-
+    dig against 8.8.8.8 plus openssl s_client and HEAD requests, run 2026-07-25 to cover the
+    petsecure.com, api.definity.com, broker.economical.com and definity.com surfaces that the
+    apis.yml-driven pass did not reach.

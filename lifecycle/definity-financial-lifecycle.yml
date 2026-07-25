@@ -1,0 +1,50 @@
+generated: '2026-07-25'
+method: searched
+source: Live probes of Definity Financial and brand hosts
+summary: >-
+  Definity Financial publishes no API versioning policy, no deprecation or sunset policy, no
+  SLA and no status page. Every status-shaped host fails to resolve at DNS. This is an honest
+  absence record for a partner-gated carrier with no public API — there is no artifact to
+  point a StatusPage or Deprecation pointer at, so none is wired.
+versioning:
+  scheme: null
+  current: null
+  docs: null
+  note: No public API and no published versioning policy.
+deprecation:
+  policy_url: null
+  sunset_header: unverified
+  note: No deprecation or sunset policy published; no public API to apply one to.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA. Broker/partner service levels, if any, are contractual and not published.
+status_page: null
+status_page_probes:
+- url: https://status.definity.com/
+  status: 000
+  note: DNS does not resolve.
+- url: https://status.definityfinancial.com/
+  status: 000
+  note: DNS does not resolve.
+- url: https://status.sonnet.ca/
+  status: 000
+  note: DNS does not resolve.
+deprecated_operations: []
+corporate_disclosure:
+  note: >-
+    Definity does publish a corporate news/investor cadence, which is the only dated,
+    recurring public record of platform change. It is corporate communication, not an API
+    changelog, so it is recorded here rather than wired as a ChangeLog artifact.
+  sources:
+  - https://www.economical.com/en/newsroom/news-releases
+  - https://www.sonnet.ca/news
+platform_notes:
+- fact: >-
+    Definity became the first Canadian P&C insurer to transition its core insurance platform
+    to Guidewire Cloud (announced September 7, 2022). Sonnet and Vyne were Guidewire
+    Innovation Award winners in 2016 and 2018 respectively.
+  relevance: >-
+    Explains the underlying policy-administration lifecycle, but Guidewire Cloud APIs are
+    licensed platform surfaces, not Definity-published developer contracts.
+  source: https://www.guidewire.com/about/press-center/press-releases/20220907/definity-becomes-the-first-canadian-p-and-c-insurer-to-transition-core

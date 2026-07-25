@@ -1,0 +1,53 @@
+
+
+  
+  
+
+    
+              
+        
+          User-Agent: *
+
+Disallow: /admin
+Disallow: /dotAdmin
+Disallow: /policy-conditions
+Disallow: /conditions-de-la-police
+Disallow: /AutoPolicyConditions_Alberta
+Disallow: /ConditionsContratAutomobile_Alberta
+Disallow: /AutoPolicyConditions_NewBrunswick
+Disallow: /ConditionsContratAutomobile_NouveauBrunswick
+Disallow: /AutoPolicyConditions_NovaScotia
+Disallow: /ConditionsContratAutomobile_NouvelleEcosse
+Disallow: /AutoPolicyConditions_Ontario
+Disallow: /ConditionsContratAutomobile_Ontario
+Disallow: /AutoPolicyConditions_PEI
+Disallow: /ConditionsContratAutomobile_IPE
+Disallow: /AutoPolicyConditions_Quebec
+Disallow: /ConditionsContratAutomobile_Quebec
+Disallow: /ConsentementAuto_Alberta
+Disallow: /ConsentAuto_NewBrunswick
+Disallow: /ConsentementAuto_NouveauBrunswick
+Disallow: /ConsentAuto_NovaScotia
+Disallow: /ConsentementAuto_NouvelleEcosse
+Disallow: /ConsentAuto_Ontario
+Disallow: /ConsentementAuto_Ontario
+Disallow: /ConsentAuto_PEI
+Disallow: /ConsentementAuto_IPE
+Disallow: /ConsentAuto_Quebec
+Disallow: /ConsentementAuto_Quebec
+Disallow: /privacy-policy-modal
+Disallow: /police-de-la-confidentialite
+Disallow: /recurring-payment-agreement-content
+Disallow: /entente-de-paiement-periodique-contenu
+Disallow: /terms-of-use-modal
+Disallow: /modalites-utilisation-modal
+Disallow: /richmedia/*
+Disallow: /group-insurance/video
+Disallow: /_SpecialPages
+Disallow: /asset/pdf/*
+
+Sitemap: https://www.sonnet.ca/sitemap.xml    
+    
+
+  
+  

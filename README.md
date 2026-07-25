@@ -16,9 +16,34 @@ Definity Financial publishes **no public, self-serve developer portal and no dow
 - **Sonnet** (`sonnet.ca`) runs a public consumer quote-and-buy web flow but publishes no developer documentation (`/openapi.json`, `/api-docs`, `/.well-known/openid-configuration` all 404).
 - No GitHub organization exists. Corporate Postman teams exist (`definity-insurance`, `definity-5429`, `economicaldefinity`) but publish zero public collections or workspaces.
 
-### ACORD posture
+### ACORD / CSIO posture
 
-**No ACORD reference found.** Canada's P&C data-standards body is **CSIO** (Centre for Study of Insurance Operations), not ACORD. CSIO maintains eDocs Standards, EDI Standards, XML Standards, XML Dataset Standards, JSON Standards, API Security Standards, Commercial Lines Data Standards, CSIOnet and My Proof of Insurance, and states that 9 of Canada's top 10 insurers are members. Definity/Economical membership or certification could not be confirmed on CSIO's publicly reachable pages, and no AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore reference was retrievable from Definity's own Imperva-walled sites.
+**No ACORD reference found.** Canada's P&C data-standards body is **CSIO** (Centre for Study of Insurance Operations), not ACORD. No AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore reference was retrievable from Definity's own Imperva-walled sites.
+
+**Definity is CSIO certified — confirmed.** The first round of this profile recorded CSIO certification as unconfirmed; the 2026-07-25 enrichment round confirmed it on CSIO's own certified-members register:
+
+| Certification | Awarded | What it attests |
+|---|---|---|
+| **API Security Standards Certification** (Insurer) | 2024-11-27 | CSIO's standard authentication and authorization API model for insurer-to-Broker-Management-System connectivity. Built by CSIO's INNOTECH Advisory Committee and its API Security Working Group; the standard addresses **OAuth 2.1** security concerns, and certification requires confirmed prevention of **16 OAuth security concerns and 18 API endpoint concerns**. |
+| **eDocs Certification** (Insurer) | 2025-05-21 | Updated CSIO eDocs Standards deployed to production; standardized codes and descriptions transmitted to Broker Management Systems. |
+| **Compliance Certification** | 2025-05-21 | All **Z-Codes** (non-standard coverage codes) eliminated from broker data exchange. |
+
+Definity is **not** listed under CSIO's *JSON API Standards Certified* or *CL Data Standards Certified* categories.
+
+This is the meaningful finding for a carrier with no public API: **the broker API surface is real and independently attested, it is simply never documented publicly.** The certification does not make any endpoint, scope, or schema available.
+
+### Core platform
+
+Definity became the **first Canadian P&C insurer to transition its core insurance platform to Guidewire Cloud** (September 2022). Sonnet and Vyne were Guidewire Innovation Award winners in 2016 and 2018 respectively. Guidewire Cloud exposes licensed platform APIs, not Definity-published developer contracts.
+
+### AI access posture (llms.txt)
+
+Two brands publish real, hand-authored **llms.txt** documents at their site roots — saved verbatim in `llms/`:
+
+- [`sonnet.ca/llms.txt`](https://www.sonnet.ca/llms.txt) (5,836 bytes)
+- [`economical.com/llms.txt`](https://www.economical.com/llms.txt) (37,448 bytes)
+
+Both set `AI-Training: Allow`, `AI-Generation: Allow`, `AI-Summarization: Allow` and `AI-Crawling: Allow` for `*`, with **named per-vendor directives for OpenAI, Google-DeepMind and Anthropic**, plus a curated reference site map for AI indexing. `petsecure.com/llms.txt` and `definityfinancial.com/.well-known/security.txt` return HTTP 200 but are **false positives** (site HTML shell and the string `Invalid key` respectively).
 
 ### Quote / bind / issue / FNOL
 
@@ -47,6 +72,25 @@ This is consistent with the Canadian market seam: OSFI supervises federally-regu
 ## APIs
 
 None. No public, documented, self-serve API is published by Definity Financial or any of its brands. See [`review.yml`](review.yml) for the full probe log and provenance.
+
+## Artifacts
+
+| Artifact | File | Method |
+|---|---|---|
+| Conformance / CSIO certifications | [`conformance/definity-financial-conformance.yml`](conformance/definity-financial-conformance.yml) | searched |
+| Authentication posture | [`authentication/definity-financial-authentication.yml`](authentication/definity-financial-authentication.yml) | searched |
+| Lifecycle (versioning / deprecation / SLA / status) | [`lifecycle/definity-financial-lifecycle.yml`](lifecycle/definity-financial-lifecycle.yml) | searched |
+| Well-known + site-root discovery index | [`well-known/definity-financial-well-known.yml`](well-known/definity-financial-well-known.yml) | searched |
+| Domain security (TLS/HSTS/DNSSEC/CAA/SPF/DMARC) | [`security/definity-financial-domain-security.yml`](security/definity-financial-domain-security.yml) | probed |
+| Sonnet llms.txt (verbatim) | [`llms/definity-financial-sonnet-llms.txt`](llms/definity-financial-sonnet-llms.txt) | searched |
+| Economical llms.txt (verbatim) | [`llms/definity-financial-economical-llms.txt`](llms/definity-financial-economical-llms.txt) | searched |
+| Definity Financial llms.txt | [`llms/definity-financial-llms.txt`](llms/definity-financial-llms.txt) | generated |
+
+**Not present, and correctly so:** no `openapi/`, `asyncapi/`, `graphql/`, `grpc/`, `mcp/`, `skills/`, `arazzo/`, `packages/`, `sandbox/`, `errors/`, `scopes/`, `conventions/`, `changelog/`, `cli/`, `components/` or `data-model/` artifacts — there is no machine-readable contract to derive them from, and none were fabricated. No vulnerability-disclosure program or trust center was found: `trust.`, `security.` and `status.` subdomains do not resolve, and no `security.txt` exists on any host.
+
+### Domain security summary
+
+All six probed hosts (`www.definityfinancial.com`, `www.economical.com`, `www.sonnet.ca`, `www.petsecure.com`, `api.definity.com`, `broker.economical.com`) serve **TLS 1.3 with HSTS**; only `broker.economical.com` sets `includeSubDomains`. Across all five registrable domains: **no DNSSEC, no CAA**, SPF everywhere with a `-all` hard fail, and DMARC published everywhere but at `p=none` on four of five — only `petsecure.com` enforces (`p=quarantine`). None reach `p=reject`.
 
 ## Links
 

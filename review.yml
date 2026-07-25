@@ -72,10 +72,82 @@ findings:
     Operations, csio.com), not ACORD; CSIO maintains eDocs Standards, EDI Standards,
     XML Standards, XML Dataset Standards, JSON Standards, API Security Standards,
     Commercial Lines Data Standards, CSIOnet and My Proof of Insurance, and states that
-    9 of Canada's top 10 insurers are members. Definity/Economical membership or
-    certification could not be confirmed on CSIO's publicly reachable pages, and no
-    AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore reference was retrievable
-    from Definity's own sites, which are Imperva-walled to anonymous crawling.
+    9 of Canada's top 10 insurers are members. No AL3, ACORD XML, NGDS, IVANS, Applied
+    Epic or Vertafore reference was retrievable from Definity's own sites, which are
+    Imperva-walled to anonymous crawling. CORRECTION (2026-07-25 enrichment round):
+    the first round recorded Definity's CSIO certification as unconfirmed. It is now
+    CONFIRMED — see csioPosture below.
+  csioPosture:
+    confirmed: true
+    confirmedOn: '2026-07-25'
+    register: https://csio.com/csio-certification/certified-members
+    certifications:
+    - name: API Security Standards Certification
+      role: Insurer
+      awarded: '2024-11-27'
+      note: >-
+        CSIO's standard authentication and authorization API model for insurer-to-Broker
+        Management System connectivity, built by the INNOTECH Advisory Committee and its
+        API Security Working Group. Certification requires confirmed prevention of 16
+        OAuth security concerns (the standard addresses OAuth 2.1) and 18 API endpoint
+        concerns. Definity quotes: Tatjana Lalkovic, SVP and Chief Technology Officer —
+        "This Certification provides brokers peace of mind that authorization and data
+        flows are fully secured"; Bill Pearce, VP Information and Cyber Security — "This
+        certification is an example of how we are ensuring we are adhering to the highest
+        industry standards as outlined by CSIO."
+      source: https://csio.com/news/csio-congratulates-definity-financial-corporation-achieving-api-security-standards
+    - name: eDocs Certification
+      role: Insurer
+      awarded: '2025-05-21'
+      note: >-
+        Definity deployed the updated CSIO eDocs Standards into production and can transmit
+        updated codes and descriptions to Broker Management Systems.
+      source: https://insurance-canada.ca/2025/05/30/definity-achieves-two-csio-certifications/
+    - name: Compliance Certification
+      role: Insurer
+      awarded: '2025-05-21'
+      note: >-
+        Definity attested it has eliminated all Z-Codes (non-standard coverage codes) from
+        its broker data-exchange services.
+      source: https://insurance-canada.ca/2025/05/30/definity-achieves-two-csio-certifications/
+    notCertified:
+    - JSON API Standards Certified
+    - CL Data Standards Certified
+    implication: >-
+      Definity's broker API surface is real and third-party attested even though it is
+      entirely undocumented publicly. The certification is the only verifiable contract
+      signal available for this carrier; it does not make any endpoint, scope, or schema
+      public.
+  corePlatform:
+    vendor: Guidewire
+    fact: >-
+      Definity became the first Canadian P&C insurer to transition its core insurance
+      platform to Guidewire Cloud (announced 2022-09-07). Sonnet and Vyne were Guidewire
+      Innovation Award winners in 2016 and 2018 respectively.
+    source: https://www.guidewire.com/about/press-center/press-releases/20220907/definity-becomes-the-first-canadian-p-and-c-insurer-to-transition-core
+    note: >-
+      Guidewire Cloud exposes licensed platform APIs, not Definity-published developer
+      contracts. Recorded as platform context, not as a Definity API.
+  llmsTxt:
+    published: true
+    note: >-
+      Newly found in the 2026-07-25 enrichment round. Two brand hosts publish real,
+      hand-authored llms.txt documents at the site root with explicit AI-access directives
+      (AI-Training / AI-Generation / AI-Summarization / AI-Crawling all Allow, plus named
+      per-vendor directives for OpenAI, Google-DeepMind and Anthropic) and a curated
+      reference site map. Saved verbatim under llms/.
+    documents:
+    - url: https://www.sonnet.ca/llms.txt
+      bytes: 5836
+      file: llms/definity-financial-sonnet-llms.txt
+    - url: https://www.economical.com/llms.txt
+      bytes: 37448
+      file: llms/definity-financial-economical-llms.txt
+    falsePositives:
+    - url: https://www.petsecure.com/llms.txt
+      note: HTTP 200 but returns the site HTML shell (~25 KB) for any unknown path.
+    - url: https://www.definityfinancial.com/llms.txt
+      note: HTTP 404.
   insuranceVerbs:
     quote:
       publicApi: false
@@ -237,6 +309,66 @@ probes:
 - url: https://www.postman.com/definity-insurance
   status: 200
   note: Corporate Postman team exists (id 6744162, apiCount 1, collectionCount 0). No public collections or workspaces published.
+- url: https://www.sonnet.ca/llms.txt
+  status: 200
+  date: '2026-07-25'
+  note: Real llms.txt, 5836 bytes. Saved verbatim to llms/definity-financial-sonnet-llms.txt.
+- url: https://www.economical.com/llms.txt
+  status: 200
+  date: '2026-07-25'
+  note: Real llms.txt, 37448 bytes. Saved verbatim to llms/definity-financial-economical-llms.txt.
+- url: https://www.petsecure.com/llms.txt
+  status: 200
+  date: '2026-07-25'
+  note: False positive. Site returns its HTML shell (~25 KB) for any unknown path.
+- url: https://www.petsecure.com/.well-known/security.txt
+  status: 200
+  date: '2026-07-25'
+  note: False positive. Same HTML shell, not an RFC 9116 document.
+- url: https://www.definityfinancial.com/.well-known/security.txt
+  status: 200
+  date: '2026-07-25'
+  note: False positive. Body is the eleven-byte string "Invalid key".
+- url: https://www.definityfinancial.com/llms.txt
+  status: 404
+  date: '2026-07-25'
+- url: https://api.definity.com/.well-known/security.txt
+  status: 404
+  date: '2026-07-25'
+- url: https://api.definity.com/.well-known/oauth-protected-resource
+  status: 404
+  date: '2026-07-25'
+- url: https://api.definity.com/.well-known/api-catalog
+  status: 404
+  date: '2026-07-25'
+- url: https://status.definity.com/
+  status: 000
+  date: '2026-07-25'
+  note: DNS does not resolve. No status page anywhere in the estate.
+- url: https://status.definityfinancial.com/
+  status: 000
+  date: '2026-07-25'
+- url: https://status.sonnet.ca/
+  status: 000
+  date: '2026-07-25'
+- url: https://trust.definity.com/
+  status: 000
+  date: '2026-07-25'
+  note: DNS does not resolve. No trust center.
+- url: https://trust.definityfinancial.com/
+  status: 000
+  date: '2026-07-25'
+- url: https://security.definityfinancial.com/
+  status: 000
+  date: '2026-07-25'
+- url: https://www.sonnet.ca/account-log-in
+  status: 200
+  date: '2026-07-25'
+  note: Policyholder login, discovered in the Sonnet sitemap.
+- url: https://www.sonnet.ca/get-a-quote
+  status: 200
+  date: '2026-07-25'
+  note: Public consumer quote-and-buy entry point. Web flow, not a documented API.
 sources:
 - url: https://www.definityfinancial.com/
   type: Website
@@ -262,6 +394,32 @@ sources:
 - url: https://www.economical.com/robots.txt
   type: Website
   note: Declares /en.sitemap.xml and /fr.sitemap.xml.
+- url: https://csio.com/csio-certification/certified-members
+  type: Certification
+  note: >-
+    CSIO's certified-members register. Lists Definity as API Security Standards Certified
+    (Insurer), eDocs Certified (Insurer) and Compliance Certified. Definity is NOT listed
+    under JSON API Standards Certified or CL Data Standards Certified.
+- url: https://csio.com/news/csio-congratulates-definity-financial-corporation-achieving-api-security-standards
+  type: Certification
+  note: >-
+    CSIO news release dated 2024-11-27 announcing Definity's API Security Standards
+    Certification, with quotes from CTO Tatjana Lalkovic and VP Information and Cyber
+    Security Bill Pearce.
+- url: https://insurance-canada.ca/2025/05/30/definity-achieves-two-csio-certifications/
+  type: Reference
+  note: Definity's eDocs and Compliance (Z-Code elimination) certifications, dated 2025-05-21.
+- url: https://www.guidewire.com/about/press-center/press-releases/20220907/definity-becomes-the-first-canadian-p-and-c-insurer-to-transition-core
+  type: Reference
+  note: >-
+    Definity as the first Canadian P&C insurer to move its core insurance platform to
+    Guidewire Cloud; Sonnet and Vyne named as Guidewire Innovation Award winners.
+- url: https://www.sonnet.ca/llms.txt
+  type: LLMsTxt
+  note: Provider-published llms.txt with explicit AI-access directives. Saved verbatim.
+- url: https://www.economical.com/llms.txt
+  type: LLMsTxt
+  note: Provider-published llms.txt with explicit AI-access directives. Saved verbatim.
 actions:
   apisYmlCreated: true
   apisListed: 0

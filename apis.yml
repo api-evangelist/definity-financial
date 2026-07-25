@@ -22,11 +22,22 @@ description: >-
   resolve, an api.definity.com host exists behind Imperva but answers HTTP 404 with an
   empty body to every anonymous path including OAuth and OpenID discovery, and the
   only reachable broker surface, broker.economical.com, is a Docebo learning
-  management system for broker training rather than an API reference. Its Vyne broker
-  digital platform and its broker connectivity are distributed through gated
-  intermediary channels, consistent with a Canadian market where OSFI supervises
-  prudentially, the provinces regulate conduct, and Consumer-Driven Banking excludes
-  insurance entirely so no open-insurance mandate forces a public API surface.
+  management system for broker training rather than an API reference. The gated API is
+  nonetheless real and independently attested: CSIO, Canada's property-and-casualty
+  data-standards body and the domestic counterpart to ACORD, certified Definity against
+  its API Security Standards on 27 November 2024 — the industry's standard authentication
+  and authorization API model for insurer-to-broker-management-system connectivity,
+  requiring confirmed mitigation of 16 OAuth security concerns and 18 API endpoint
+  concerns — and Definity is additionally CSIO eDocs Certified and Compliance Certified
+  (all non-standard Z-Codes eliminated from broker data exchange). Its Vyne broker digital
+  platform runs on Guidewire Cloud, which Definity was the first Canadian P&C insurer to
+  adopt for its core insurance platform. Two brands, Sonnet and Economical, publish real
+  hand-authored llms.txt documents with explicit AI-training, generation, summarization and
+  crawling directives, including named directives for OpenAI, Google-DeepMind and Anthropic.
+  All of this sits in a Canadian market where OSFI supervises prudentially, the provinces
+  regulate conduct, and Consumer-Driven Banking excludes insurance entirely, so no
+  open-insurance mandate forces a public API surface and standardization is industry-led
+  through CSIO instead.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
@@ -39,6 +50,8 @@ tags:
 - Pet Insurance
 - Direct to Consumer
 - Partner Gated
+- CSIO
+- Insurtech
 created: '2026-07-25'
 modified: '2026-07-25'
 specificationVersion: '0.19'
@@ -47,13 +60,76 @@ common:
 - type: Website
   url: https://www.definityfinancial.com/
 - type: Website
+  name: Economical Insurance
   url: https://www.economical.com/
 - type: Website
+  name: Sonnet Insurance
   url: https://www.sonnet.ca/
 - type: Website
+  name: Petsecure
   url: https://www.petsecure.com/
 - type: Postman
   url: https://www.postman.com/definity-insurance
+- type: Blog
+  name: Economical Insurance blog
+  url: https://www.economical.com/en/blog
+- type: Blog
+  name: Sonnet Insurance blog
+  url: https://www.sonnet.ca/blog
+- type: Support
+  name: Economical contact us
+  url: https://www.economical.com/en/contact-us
+- type: HelpCenter
+  name: Sonnet FAQs
+  url: https://www.sonnet.ca/faqs
+- type: SignUp
+  name: Sonnet get a quote
+  url: https://www.sonnet.ca/get-a-quote
+- type: Login
+  name: Sonnet account log in
+  url: https://www.sonnet.ca/account-log-in
+- type: TermsOfService
+  name: Economical terms of use
+  url: https://www.economical.com/en/terms-of-use
+- type: TermsOfService
+  name: Sonnet terms of use
+  url: https://www.sonnet.ca/terms-of-use
+- type: PrivacyPolicy
+  name: Economical privacy
+  url: https://www.economical.com/en/privacy
+- type: PrivacyPolicy
+  name: Sonnet privacy
+  url: https://www.sonnet.ca/privacy
+- type: Compliance
+  name: CSIO certified members register — Definity is API Security, eDocs and Compliance Certified
+  url: https://csio.com/csio-certification/certified-members
+- type: Standard
+  name: CSIO — Centre for Study of Insurance Operations
+  url: https://csio.com/
+- type: Conformance
+  name: Standards conformance and CSIO certifications
+  url: conformance/definity-financial-conformance.yml
+- type: Authentication
+  name: Authentication posture (gated, CSIO-attested)
+  url: authentication/definity-financial-authentication.yml
+- type: Lifecycle
+  name: Versioning, deprecation, SLA and status posture
+  url: lifecycle/definity-financial-lifecycle.yml
+- type: WellKnown
+  name: Well-known and site-root discovery probe index
+  url: well-known/definity-financial-well-known.yml
+- type: DomainSecurity
+  name: TLS, HSTS, DNSSEC, CAA, SPF and DMARC probe
+  url: security/definity-financial-domain-security.yml
+- type: LLMsTxt
+  name: Definity Financial llms.txt
+  url: llms/definity-financial-llms.txt
+- type: LLMsTxt
+  name: Sonnet llms.txt (published, saved verbatim)
+  url: llms/definity-financial-sonnet-llms.txt
+- type: LLMsTxt
+  name: Economical llms.txt (published, saved verbatim)
+  url: llms/definity-financial-economical-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

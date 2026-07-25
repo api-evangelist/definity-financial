@@ -1,0 +1,144 @@
+generated: '2026-07-25'
+method: searched
+source: https://csio.com/csio-certification/certified-members
+summary: >-
+  Definity Financial publishes no machine-readable API contract of any kind, so none of the
+  spec-level conformance assertions below can be evidenced from a first-party artifact.
+  What Definity DOES have is third-party, verifiable certification against the Canadian
+  property-and-casualty industry's own API standards body: CSIO (Centre for Study of
+  Insurance Operations, csio.com), the Canadian counterpart to ACORD. Definity is listed by
+  CSIO as API Security Standards Certified, eDocs Certified and Compliance Certified. This
+  corrects the earlier round of this profile, which recorded CSIO membership/certification as
+  "could not be confirmed" — it is now confirmed on CSIO's own certified-members register and
+  in CSIO's dated news releases.
+standards:
+- id: csio-api-security-standards
+  name: CSIO API Security Standards
+  conforms: true
+  certified: true
+  certified_on: '2024-11-27'
+  body: Centre for Study of Insurance Operations (CSIO)
+  scope: Insurer-to-broker-management-system (BMS) API connectivity
+  evidence: >-
+    CSIO news release "CSIO Congratulates Definity Financial Corporation for Achieving API
+    Security Standards Certification" (2024-11-27) and CSIO's certified-members register,
+    which lists Definity under "API Security Standards Certified (Insurer)". The Standards
+    were built by CSIO's INNOTECH Advisory Committee and its API Security Working Group and
+    define a standard authentication and authorization API model for insurers and BMS
+    vendors; certification requires confirmed prevention of 16 OAuth security concerns and
+    18 API endpoint concerns.
+  sources:
+  - https://csio.com/news/csio-congratulates-definity-financial-corporation-achieving-api-security-standards
+  - https://csio.com/csio-certification/certified-members
+  - https://www.insurancebusinessmag.com/ca/news/technology/definity-earns-csio-api-security-certification-515841.aspx
+- id: csio-edocs-standards
+  name: CSIO eDocs Standards
+  conforms: true
+  certified: true
+  certified_on: '2025-05-21'
+  body: Centre for Study of Insurance Operations (CSIO)
+  scope: Electronic document codes and descriptions transmitted to Broker Management Systems
+  evidence: >-
+    Definity deployed the updated CSIO eDocs Standards into production and can transmit
+    updated codes and descriptions to Broker Management Systems; listed on CSIO's
+    certified-members register as eDocs Certified (Insurer).
+  sources:
+  - https://insurance-canada.ca/2025/05/30/definity-achieves-two-csio-certifications/
+  - https://csio.com/csio-certification/certified-members
+- id: csio-compliance-certification
+  name: CSIO Compliance Certification (Z-Code elimination)
+  conforms: true
+  certified: true
+  certified_on: '2025-05-21'
+  body: Centre for Study of Insurance Operations (CSIO)
+  scope: Data exchange with brokers uses only CSIO standard coverage codes
+  evidence: >-
+    Definity attested that it has eliminated all Z-Codes (non-standard coverage codes) from
+    its broker data-exchange services; listed on CSIO's certified-members register as
+    Compliance Certified.
+  sources:
+  - https://insurance-canada.ca/2025/05/30/definity-achieves-two-csio-certifications/
+  - https://csio.com/csio-certification/certified-members
+- id: csio-json-api-standards
+  name: CSIO JSON API Standards
+  conforms: false
+  certified: false
+  evidence: >-
+    CSIO publishes a distinct "JSON API Standards Certified" category. Definity is NOT
+    listed in it on the certified-members register (Wawanesa and Northbridge are). Recorded
+    as an honest negative, not an omission.
+  sources:
+  - https://csio.com/csio-certification/certified-members
+- id: csio-cl-data-standards
+  name: CSIO Commercial Lines Data Standards
+  conforms: false
+  certified: false
+  evidence: Definity is not listed under "CL Data Standards Certified" on CSIO's register.
+  sources:
+  - https://csio.com/csio-certification/certified-members
+- id: acord
+  name: ACORD standards
+  conforms: false
+  evidence: >-
+    No ACORD, AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore reference is retrievable
+    from any Definity, Economical, Sonnet or Petsecure property. Canada's P&C data-standards
+    body is CSIO, not ACORD; the CSIO entries above are the correct Canadian analogue.
+- id: oauth2
+  name: OAuth 2.x / 2.1
+  conforms: unverified
+  evidence: >-
+    The CSIO API Security Standards Definity is certified against address OAuth 2.1 security
+    concerns and define a standard authentication/authorization model, so an OAuth-family
+    grant is strongly implied for broker/BMS connectivity. Definity itself publishes nothing:
+    api.definity.com returns HTTP 404 with an empty body for
+    /.well-known/oauth-authorization-server and /.well-known/openid-configuration. Recorded as
+    unverified rather than true — the certification is third-party attestation, not a
+    first-party contract we can read.
+- id: openid-connect
+  name: OpenID Connect Discovery
+  conforms: false
+  evidence: No /.well-known/openid-configuration document on any host (404, or the string "Invalid key").
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: No OpenAPI or Swagger document published on any first-party host.
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: No event catalog, webhook documentation or AsyncAPI definition found.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: No public /graphql endpoint on any first-party host.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: unverified
+  evidence: No public error contract to inspect.
+- id: rfc9116-security-txt
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: >-
+    No security.txt on any host. www.definityfinancial.com returns HTTP 200 with the body
+    "Invalid key" and www.petsecure.com returns its HTML shell — both false positives.
+- id: rfc8594-sunset-header
+  name: RFC 8594 Sunset header
+  conforms: unverified
+  evidence: No public API or deprecation policy to inspect.
+- id: llms-txt
+  name: llms.txt
+  conforms: true
+  evidence: >-
+    Real, hand-authored llms.txt documents are published at https://www.sonnet.ca/llms.txt
+    and https://www.economical.com/llms.txt, each with explicit AI-training/generation/
+    summarization/crawling directives (including named directives for OpenAI, Google-DeepMind
+    and Anthropic) plus a curated reference site map. Saved verbatim under llms/.
+regulatory_context:
+  prudential: Office of the Superintendent of Financial Institutions (OSFI), federal
+  conduct:
+  - Financial Services Regulatory Authority of Ontario (FSRA)
+  - Autorite des marches financiers (AMF), Quebec
+  open_data_mandate: >-
+    None. Canada's Consumer-Driven Banking framework excludes insurance entirely, so no
+    open-insurance mandate forces a public API surface. Standardization in Canadian P&C is
+    industry-led through CSIO rather than regulator-mandated — which is exactly why the CSIO
+    certifications above are the meaningful conformance signal for this carrier.

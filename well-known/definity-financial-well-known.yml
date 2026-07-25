@@ -1,0 +1,126 @@
+generated: '2026-07-25'
+method: searched
+source: live HTTP probes of every Definity Financial brand host and the api.definity.com gateway
+summary: >-
+  No RFC 9116 security.txt, no OIDC discovery document, no RFC 8414 authorization-server
+  metadata, no RFC 9727 api-catalog and no ai-plugin.json is published on any Definity
+  Financial host. Two brand hosts DO publish a real, hand-authored llms.txt at the site
+  root (www.sonnet.ca and www.economical.com); both are saved verbatim under llms/.
+  Three responses are 200 but are NOT the requested document and must not be mistaken
+  for one: www.definityfinancial.com returns the eleven-byte string "Invalid key" for any
+  /.well-known/ path, and www.petsecure.com returns its full HTML page shell (~25 KB) for
+  any unknown path. Both are recorded below as false positives.
+hosts:
+- host: https://api.definity.com
+  role: partner/production gateway (Imperva-fronted, undocumented)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /openapi.json
+    status: 404
+- host: https://www.definityfinancial.com
+  role: corporate website
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    false_positive: true
+    note: Body is the eleven-byte string "Invalid key" — not an RFC 9116 document.
+  - path: /.well-known/openid-configuration
+    status: 200
+    false_positive: true
+    note: Body is the eleven-byte string "Invalid key" — not OpenID Provider metadata.
+  - path: /llms.txt
+    status: 404
+  - path: /ai.txt
+    status: 404
+  - path: /sitemap.xml
+    status: 404
+  - path: /robots.txt
+    status: 200
+    file: definity-financial-definityfinancial-robots.txt
+    note: Allow all, crawl-delay 10, no sitemap declared.
+- host: https://www.economical.com
+  role: broker-distributed brand website
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/definity-financial-economical-llms.txt
+    bytes: 37448
+    note: Real, hand-authored llms.txt with AI directives and a curated site map.
+  - path: /robots.txt
+    status: 200
+    note: Declares /en.sitemap.xml and /fr.sitemap.xml.
+- host: https://www.sonnet.ca
+  role: direct-to-consumer digital carrier website
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/definity-financial-sonnet-llms.txt
+    bytes: 5836
+    note: Real, hand-authored llms.txt with AI directives and a curated site map.
+  - path: /ai.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+    file: definity-financial-sonnet-robots.txt
+  - path: /sitemap.xml
+    status: 200
+    note: ~946 KB XML sitemap.
+  - path: /api-docs
+    status: 404
+- host: https://www.petsecure.com
+  role: pet insurance brand website
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    false_positive: true
+    note: Returns the site HTML shell (~25 KB) for any unknown path, including this one.
+  - path: /llms.txt
+    status: 200
+    false_positive: true
+    note: Same HTML shell. Not an llms.txt document.
+ai_directives:
+  source:
+  - https://www.sonnet.ca/llms.txt
+  - https://www.economical.com/llms.txt
+  note: >-
+    Both brand llms.txt documents carry explicit AI-access directives — an unusual, real
+    consent signal from a carrier that publishes no API. Values are recorded verbatim.
+  default:
+    user_agent: '*'
+    ai_training: Allow
+    ai_generation: Allow
+    ai_summarization: Allow
+    ai_crawling: Allow
+  named_agents:
+  - user_agent: OpenAI
+    ai_training: Allow
+    ai_generation: Allow
+    ai_summarization: Allow
+  - user_agent: Google-DeepMind
+    ai_training: Allow
+    ai_generation: Allow
+    ai_summarization: Allow
+  - user_agent: Anthropic
+    ai_training: Allow
+    ai_generation: Allow
+    ai_summarization: Allow
+  sitemaps:
+  - https://www.sonnet.ca/sitemap.xml
+  - https://www.economical.com/en.sitemap.xml

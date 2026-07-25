@@ -1,0 +1,96 @@
+# llms.txt for sonnet.ca
+
+# Website Overview
+# Sonnet Insurance is Canada's first fully online home, auto, condo, tenant, landlord, and pet insurance provider. By leveraging data-driven technology and intuitive design, Sonnet offers clear, customizable coverage with top-rated customer support and innovative features like the Sonnet Shift app—delivering secure, affordable, and straightforward insurance digitally.
+
+User-agent: *
+AI-Training: Allow
+AI-Generation: Allow
+AI-Summarization: Allow
+AI-Crawling: Allow
+
+# Specific Directives for AI Companies
+User-agent: OpenAI
+AI-Training: Allow
+AI-Generation: Allow
+AI-Summarization: Allow
+
+User-agent: Google-DeepMind
+AI-Training: Allow
+AI-Generation: Allow
+AI-Summarization: Allow
+
+User-agent: Anthropic
+AI-Training: Allow
+AI-Generation: Allow
+AI-Summarization: Allow
+
+# Reference Content for AI Indexing
+Reference-Content:
+Insurance Products
+### Auto Insurance
+[Auto](https://www.sonnet.ca/auto-insurance): Provides comprehensive coverage options for vehicles, ensuring protection against accidents, theft, and damage.
+### Home Insurance
+[Home](https://www.sonnet.ca/home-insurance): Offers various home insurance plans to protect homeowners from potential risks and damages to their property.
+### Condo Insurance
+[Condo](https://www.sonnet.ca/condo-insurance): Tailored insurance solutions for condo owners, covering personal property and liability.
+### Tenant Insurance
+[Tenant](https://www.sonnet.ca/tenant-insurance): Designed for renters, this insurance protects personal belongings and provides liability coverage.
+### Landlord Insurance
+[Landlord](https://www.sonnet.ca/landlord-insurance): Specialized insurance for property owners renting out their homes, covering property damage and liability.
+### Pet Insurance
+[Pet](https://www.sonnet.ca/pet-insurance): Coverage options for pet health, ensuring that pets receive necessary medical care without financial strain.
+Claims and Support
+### Claims Process
+[Claims](https://www.sonnet.ca/claims): Detailed information on how to file a claim, including necessary documentation and steps to follow.
+### Cancellation Calculator
+[Cancellation Calculator](https://www.sonnet.ca/cancellation-calculator): A tool to help customers understand the implications and costs associated with canceling their insurance policies.
+Additional Resources
+### Blog
+[Blog](https://www.sonnet.ca/blog): Insights and articles on insurance topics, tips for policyholders, and updates from Sonnet Insurance.
+### FAQs
+[FAQs](https://www.sonnet.ca/faqs): Frequently asked questions addressing common inquiries about policies, coverage, and claims.
+### News
+[News](https://www.sonnet.ca/news): Updates and announcements related to Sonnet Insurance, including new products and company initiatives.
+### Offers
+[Offers](https://www.sonnet.ca/connect): Current promotions and discounts available for new and existing customers.
+### About Us
+[About Us](https://www.sonnet.ca/about-us): Information about Sonnet Insurance, its mission, and values.
+### Contact Us
+[Contact Us](https://www.sonnet.ca/contact-us): Details on how to reach customer service for inquiries or support.
+Community Engagement
+### Group Discounts
+[Group Discounts](https://www.sonnet.ca/group-insurance): Information on discounts available for members of specific groups or organizations.
+### Compliments & Complaints
+[Compliments & Complaints](https://www.sonnet.ca/compliments-and-complaints): A platform for customers to provide feedback on their experiences with Sonnet Insurance.
+### Stay in Touch
+[Stay in Touch](https://www.sonnet.ca/newsletter): Options for customers to subscribe to updates and newsletters from Sonnet Insurance.
+### Join Us
+[Join Us](https://www.sonnet.ca/join-us): Career opportunities and information on how to become part of the Sonnet Insurance team.
+Social Media
+### Twitter
+[Twitter Open in a new window](https://twitter.com/sonnetinsurance): Follow Sonnet Insurance for updates and news on Twitter.
+### Facebook
+[Facebook Open in a new window](https://www.facebook.com/sonnetinsurance/): Connect with Sonnet Insurance on Facebook for community engagement and updates.
+### LinkedIn
+[LinkedIn Open in a new window](https://www.linkedin.com/company/10315791): Professional updates and networking opportunities with Sonnet Insurance on LinkedIn.
+### Instagram
+[Instagram Open in a new window](https://www.instagram.com/sonnetinsurance): Visual updates and insights from Sonnet Insurance on Instagram.
+### YouTube
+[YouTube Open in a new window](https://www.youtube.com/channel/UCEOXIbT5710DW8JhHfD_qhw): Video content and informative resources available on Sonnet Insurance's YouTube channel.
+### TikTok
+[TikTok Open in a new window](https://www.tiktok.com/@sonnetinsurance): Engaging and entertaining content from Sonnet Insurance on TikTok.
+Legal and Privacy
+### Terms of Use
+[Terms of Use](https://www.sonnet.ca/terms-of-use): The legal terms governing the use of Sonnet Insurance's services and website.
+### Recurring Payment Agreement
+[Recurring Payment Agreement](https://www.sonnet.ca/recurring-payment-agreement): Information regarding the terms for setting up recurring payments for insurance premiums.
+### Privacy
+[Privacy](https://www.sonnet.ca/privacy): Details on how Sonnet Insurance collects, uses, and protects customer information.
+### Privacy Preferences
+[Privacy Preferences](javascript:window.semaphore.push(['showPreferences']);): Options for customers to manage their privacy settings and preferences.
+### Accessibility
+[Accessibility](https://www.sonnet.ca/accessibility): Information on the accessibility features of Sonnet Insurance's services and website.
+
+# Sitemap for AI Indexing (Not Training)
+Sitemap: https://www.sonnet.ca/sitemap.xml

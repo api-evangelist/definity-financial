@@ -1,0 +1,69 @@
+# Definity Financial
+
+> Definity Financial Corporation (TSX: DFY) is a Canadian property and casualty insurance
+> group headquartered in Waterloo, Ontario — the demutualized successor to Economical Mutual
+> Insurance Company (founded 1871). It underwrites personal, commercial, farm and pet lines
+> across Canada through four brands: Economical (broker-distributed), Sonnet (direct-to-consumer
+> digital), Family Insurance Solutions, and Petline/Petsecure. Definity publishes NO public,
+> self-serve developer portal and NO downloadable OpenAPI, AsyncAPI, GraphQL or Protobuf
+> definition. Its API surface is real but entirely partner-gated: broker/BMS connectivity runs
+> through gated intermediary channels, and Definity is CSIO API Security Standards Certified
+> (November 27, 2024) — the Canadian P&C industry's standard authentication and authorization
+> API model for insurer-to-broker-management-system data exchange.
+
+## Company
+
+- [Definity Financial](https://www.definityfinancial.com/): Corporate site and investor material (TSX: DFY).
+- [Economical Insurance](https://www.economical.com/): Broker-distributed home, auto, farm, business and surety lines.
+- [Sonnet Insurance](https://www.sonnet.ca/): Direct-to-consumer fully digital carrier (auto, home, condo, tenant, landlord, pet).
+- [Petsecure](https://www.petsecure.com/): Petline/Petsecure pet insurance brand.
+
+## Brand llms.txt (published by the provider, saved verbatim)
+
+- [Sonnet llms.txt](https://www.sonnet.ca/llms.txt): AI-crawling directives plus a curated site map of Sonnet's product, claims, legal and support pages.
+- [Economical llms.txt](https://www.economical.com/llms.txt): AI-crawling directives plus a curated site map of Economical's personal, business, group, claims, broker and blog pages.
+
+Both documents explicitly allow AI training, generation, summarization and crawling, with
+named per-vendor directives for OpenAI, Google-DeepMind and Anthropic.
+
+## APIs
+
+None published. There is no public, documented, self-serve API for Definity Financial or any
+of its brands. `api.definity.com` resolves behind an Imperva edge and answers HTTP 404 with an
+empty body to every anonymous path, including `/openapi.json`, `/swagger.json`, `/api-docs`,
+`/graphql`, `/.well-known/openid-configuration` and `/.well-known/oauth-authorization-server`.
+`broker.economical.com` is a Docebo SaaS learning management system serving broker training
+courseware behind a login wall, not an API reference. See `review.yml` for the full probe log.
+
+## Standards and certification
+
+- [CSIO API Security Standards Certification — Definity](https://csio.com/news/csio-congratulates-definity-financial-corporation-achieving-api-security-standards): Awarded November 27, 2024. CSIO's standard authentication and authorization API model for insurer/BMS connectivity, built by the INNOTECH Advisory Committee's API Security Working Group; addresses OAuth 2.1 security concerns and API endpoint concerns.
+- [CSIO Certified Members](https://csio.com/csio-certification/certified-members): Definity is listed as API Security Standards Certified, eDocs Certified and Compliance Certified (all Z-Codes eliminated from broker data exchange).
+- [CSIO](https://csio.com/): Centre for Study of Insurance Operations — Canada's P&C data-standards body (the Canadian counterpart to ACORD). Maintains eDocs, EDI, XML, XML Dataset, JSON, API Security and Commercial Lines Data Standards, plus CSIOnet and My Proof of Insurance.
+
+## Artifacts in this repo
+
+- [apis.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/apis.yml): The APIs.json index for this provider.
+- [review.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/review.yml): Full probe log, transports, ACORD/CSIO posture and provenance.
+- [conformance/definity-financial-conformance.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/conformance/definity-financial-conformance.yml): Standards conformance, including the CSIO certifications.
+- [authentication/definity-financial-authentication.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/authentication/definity-financial-authentication.yml): Authentication posture (gated; CSIO-attested).
+- [well-known/definity-financial-well-known.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/well-known/definity-financial-well-known.yml): `/.well-known/` and site-root discovery probe results.
+- [security/definity-financial-domain-security.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/security/definity-financial-domain-security.yml): TLS/HSTS/DNSSEC/CAA/SPF/DMARC probe.
+- [lifecycle/definity-financial-lifecycle.yml](https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/lifecycle/definity-financial-lifecycle.yml): Versioning, deprecation and status-page posture.
+
+## Customer surfaces
+
+- [Sonnet get a quote](https://www.sonnet.ca/get-a-quote): Public consumer quote-and-buy web flow (not a documented API).
+- [Sonnet account log in](https://www.sonnet.ca/account-log-in): Policyholder account.
+- [Sonnet claims](https://www.sonnet.ca/claims): Claims filing information.
+- [Economical claims](https://www.economical.com/en/claims): Auto and property claims.
+- [Economical find a broker](https://www.economical.com/en/the-broker-difference/find-a-broker): Broker locator.
+- [Economical contact us](https://www.economical.com/en/contact-us): Support and complaints.
+- [Sonnet FAQs](https://www.sonnet.ca/faqs): Product, account and quoting FAQs.
+
+## Legal
+
+- [Sonnet privacy](https://www.sonnet.ca/privacy)
+- [Sonnet terms of use](https://www.sonnet.ca/terms-of-use)
+- [Economical privacy](https://www.economical.com/en/privacy)
+- [Economical terms of use](https://www.economical.com/en/terms-of-use)
