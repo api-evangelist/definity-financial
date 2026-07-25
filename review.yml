@@ -1,0 +1,273 @@
+aid: definity-financial
+name: Definity Financial
+review:
+  question: Does Definity Financial publish a public, self-serve developer portal or a downloadable API definition?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: Canada
+  tier: carrier-pc
+  gated: true
+  specsHarvested: 0
+findings:
+  summary: |
+    Definity Financial Corporation (TSX: DFY, Waterloo, Ontario) publishes no public
+    self-serve developer portal and no downloadable API definition of any kind. This is
+    an honest stub: the record is thin because the surface is thin, not because the
+    research stopped early.
+
+    Every developer-shaped subdomain of the primary domain fails to resolve at DNS:
+    developer.definityfinancial.com, developers.definityfinancial.com,
+    docs.definityfinancial.com and api.definityfinancial.com all returned curl exit
+    status 000 (no connection). The corresponding first-party paths
+    /developers, /api, /developer, /partners and /integrations on
+    www.definityfinancial.com all returned HTTP 403 to anonymous clients behind an
+    Imperva/Incapsula edge; a rendered fetch of the homepage confirmed there are no
+    developer, API, or partner-technology links anywhere in the site navigation.
+
+    A real API host does exist but is entirely non-public. api.definity.com resolves
+    (45.60.75.50, 45.60.135.50, Imperva-fronted, x-cdn: Imperva) and answers HTTP 404
+    with content-length 0 to every anonymous request, including /openapi.json,
+    /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs, /spec, /redoc, /docs,
+    /graphql, /swagger-ui.html, /swagger/v1/swagger.json, /health,
+    /.well-known/openid-configuration and /.well-known/oauth-authorization-server.
+    That is a partner/production gateway with zero public discovery surface.
+
+    The only reachable broker-facing host is broker.economical.com, which returned
+    HTTP 200 and redirected to /learn. Inspection of the HTML shows it is a Docebo
+    SaaS learning management system (CNAME economical.docebosaas.com, Docebo UI
+    v1.149.0 banner in the markup) — broker training courseware, not an API reference.
+    It is classified here as a login wall, not a developer portal. Its /openapi.json
+    and /assets/index.js return 403 and every other path returns the SPA shell at 200,
+    so path-probe 200s on that host are not evidence of anything.
+
+    Definity's Vyne broker digital platform is named in the company's own investor
+    material as its broker operations platform, but no public Vyne documentation host
+    was found. vyne.ca, www.vyne.ca, vyne.definity.com, getvyne.ca, vyneinsurance.ca
+    and vynebroker.com do not resolve or are unrelated; vyne.economical.ca returns
+    HTTP 200 but serves a third-party "This domain is for sale" parking page (server:
+    Angie) and is explicitly NOT a Definity property. No Vyne API documentation,
+    endpoint, or specification was located.
+
+    Sonnet (www.sonnet.ca, HTTP 200), the group's direct-to-consumer digital carrier,
+    runs a public consumer quote flow through its own website but publishes no
+    developer documentation: /openapi.json, /api-docs and
+    /.well-known/openid-configuration all return HTTP 404. The consumer quote journey
+    is a web application, not a documented API product, and is not listed as an API.
+
+    No GitHub organization exists for the company: api.github.com/orgs lookups for
+    definity, definity-financial, definityfinancial, economical-insurance,
+    economicalinsurance and sonnet-insurance all returned HTTP 404.
+
+    Postman corporate tenants exist but publish nothing. The public Postman search
+    index shows three related teams — "Definity Insurance" (handle definity-insurance,
+    team id 6744162, created 2025-01-31, apiCount 1, collectionCount 0), "Definity"
+    (handle definity-5429), and "Economical/Definity" (handle economicaldefinity) —
+    with zero public collections and zero public workspaces returned by the workspace
+    index. https://www.postman.com/definity-insurance returns HTTP 200 but exposes no
+    published collection or API documentation.
+  acordPosture: >-
+    No ACORD reference found on any reachable Definity, Economical, Sonnet or Petsecure
+    property. Canada's P&C data-standards body is CSIO (Centre for Study of Insurance
+    Operations, csio.com), not ACORD; CSIO maintains eDocs Standards, EDI Standards,
+    XML Standards, XML Dataset Standards, JSON Standards, API Security Standards,
+    Commercial Lines Data Standards, CSIOnet and My Proof of Insurance, and states that
+    9 of Canada's top 10 insurers are members. Definity/Economical membership or
+    certification could not be confirmed on CSIO's publicly reachable pages, and no
+    AL3, ACORD XML, NGDS, IVANS, Applied Epic or Vertafore reference was retrievable
+    from Definity's own sites, which are Imperva-walled to anonymous crawling.
+  insuranceVerbs:
+    quote:
+      publicApi: false
+      note: No documented quote API. Sonnet exposes a consumer quote web flow; Vyne provides broker quoting through a gated platform.
+    bind:
+      publicApi: false
+      note: No documented bind API. Binding occurs through the gated broker platform or the Sonnet consumer web flow.
+    issue:
+      publicApi: false
+      note: No documented policy-issuance API.
+    fnol:
+      publicApi: false
+      note: No documented FNOL or claims API. Claims are reported by phone, brand website form, or through a broker.
+    audience: partner-only
+  authModel:
+    published: false
+    note: >-
+      No authentication scheme is published. api.definity.com serves neither
+      /.well-known/openid-configuration nor /.well-known/oauth-authorization-server
+      (both HTTP 404, empty body). broker.economical.com is a Docebo SaaS LMS behind a
+      broker sign-in. No API key, OAuth2, or mTLS onboarding documentation is public.
+  webhooks:
+    published: false
+    note: No event catalog, webhook documentation, or AsyncAPI definition found.
+  graphql:
+    published: false
+    note: No public /graphql endpoint found on any first-party host.
+  grpc:
+    published: false
+    note: No published .proto files found.
+  postman:
+    publicCollections: false
+    note: Corporate Postman teams exist (definity-insurance, definity-5429, economicaldefinity) but publish zero public collections or workspaces.
+  transports:
+  - protocol: REST
+    scheme: https
+    host: api.definity.com
+    documented: false
+    note: Host resolves behind Imperva and returns HTTP 404 with empty body to all anonymous paths. Production/partner gateway, no public discovery.
+  - protocol: HTTPS Web
+    scheme: https
+    host: broker.economical.com
+    documented: false
+    note: Docebo SaaS learning management system for broker training. Login wall, not a developer portal.
+  - protocol: HTTPS Web
+    scheme: https
+    host: www.sonnet.ca
+    documented: false
+    note: Direct-to-consumer digital quote and purchase web flow. No developer documentation.
+  - protocol: GraphQL
+    documented: false
+  - protocol: WebSocket
+    documented: false
+  - protocol: AsyncAPI
+    documented: false
+probes:
+- url: https://developer.definityfinancial.com
+  status: 000
+  note: DNS does not resolve.
+- url: https://developers.definityfinancial.com
+  status: 000
+  note: DNS does not resolve.
+- url: https://docs.definityfinancial.com
+  status: 000
+  note: DNS does not resolve.
+- url: https://api.definityfinancial.com
+  status: 000
+  note: DNS does not resolve.
+- url: https://www.definityfinancial.com/
+  status: 403
+  note: Imperva edge blocks anonymous curl. Rendered fetch succeeded and shows no developer or API links.
+- url: https://www.definityfinancial.com/developers
+  status: 403
+- url: https://www.definityfinancial.com/api
+  status: 403
+- url: https://www.definityfinancial.com/developer
+  status: 403
+- url: https://www.definityfinancial.com/partners
+  status: 403
+- url: https://www.definityfinancial.com/integrations
+  status: 403
+- url: https://www.definityfinancial.com/robots.txt
+  status: 200
+  note: Allows all, crawl-delay 10, no sitemap declared.
+- url: https://www.definityfinancial.com/.well-known/openid-configuration
+  status: 200
+  note: Body is the string "Invalid key" — not an OpenID Provider metadata document.
+- url: https://api.definity.com/
+  status: 404
+  note: Host resolves (45.60.75.50, 45.60.135.50), Imperva-fronted, content-length 0.
+- url: https://api.definity.com/openapi.json
+  status: 404
+- url: https://api.definity.com/openapi.yaml
+  status: 404
+- url: https://api.definity.com/swagger.json
+  status: 404
+- url: https://api.definity.com/v1/openapi.json
+  status: 404
+- url: https://api.definity.com/api-docs
+  status: 404
+- url: https://api.definity.com/spec
+  status: 404
+- url: https://api.definity.com/redoc
+  status: 404
+- url: https://api.definity.com/docs
+  status: 404
+- url: https://api.definity.com/graphql
+  status: 404
+- url: https://api.definity.com/swagger-ui.html
+  status: 404
+- url: https://api.definity.com/swagger/v1/swagger.json
+  status: 404
+- url: https://api.definity.com/.well-known/openid-configuration
+  status: 404
+- url: https://api.definity.com/.well-known/oauth-authorization-server
+  status: 404
+- url: https://broker.economical.com/
+  status: 200
+  note: Redirects to /learn. Docebo SaaS LMS (economical.docebosaas.com) for broker training. Login wall, not a developer portal.
+- url: https://www.economical.com/
+  status: 200
+  note: Brand site. Incapsula-walled to anonymous crawling; sitemap at /en.sitemap.xml contains no developer, API, or integration paths.
+- url: https://www.economical.com/en.sitemap.xml
+  status: 200
+  note: Fetched and grepped. No /developers, /api, /integrations, ACORD, CSIO, or Vyne documentation paths present.
+- url: https://www.sonnet.ca/
+  status: 200
+- url: https://www.sonnet.ca/openapi.json
+  status: 404
+- url: https://www.sonnet.ca/api-docs
+  status: 404
+- url: https://www.sonnet.ca/.well-known/openid-configuration
+  status: 404
+- url: https://www.petsecure.com/
+  status: 200
+- url: https://vyne.economical.ca/
+  status: 200
+  note: NOT a Definity property. Third-party "This domain is for sale" parking page (server Angie). Disregarded.
+- url: https://vyne.ca/
+  status: 000
+- url: https://vyne.definity.com/
+  status: 000
+- url: https://getvyne.ca/
+  status: 000
+- url: https://broker.definityfinancial.com/
+  status: 000
+- url: https://portal.economical.com/
+  status: 000
+- url: https://developer.economical.com/
+  status: 000
+- url: https://api.economical.com/
+  status: 000
+- url: https://api.github.com/orgs/definity
+  status: 404
+- url: https://api.github.com/orgs/definity-financial
+  status: 404
+- url: https://api.github.com/orgs/economical-insurance
+  status: 404
+- url: https://www.postman.com/definity-insurance
+  status: 200
+  note: Corporate Postman team exists (id 6744162, apiCount 1, collectionCount 0). No public collections or workspaces published.
+sources:
+- url: https://www.definityfinancial.com/
+  type: Website
+  note: Corporate homepage. Confirms brands Economical, Sonnet, Family, Petline; no developer or API links in navigation.
+- url: https://www.definityfinancial.com/investors
+  type: Website
+  note: >-
+    Confirms $6.3B gross written premiums TTM pro forma including the Travelers Canada
+    transaction, Sonnet described as the largest fully digital direct-to-consumer
+    insurance business in Canada, and Vyne named as the broker operations platform.
+- url: https://en.wikipedia.org/wiki/Economical_Insurance
+  type: Reference
+  note: >-
+    Founding 1871 in Berlin (now Kitchener) Ontario, demutualization vote May 2021, IPO
+    November 2021, rename to Definity Insurance Company December 2021, headquarters
+    Waterloo Ontario, TSX ticker DFY.
+- url: http://csio.com/
+  type: Standard
+  note: >-
+    Canada's P&C standards body. Maintains eDocs, EDI, XML, XML Dataset, JSON, API
+    Security and Commercial Lines Data Standards plus CSIOnet and My Proof of
+    Insurance. Definity/Economical not named on the reachable public pages.
+- url: https://www.economical.com/robots.txt
+  type: Website
+  note: Declares /en.sitemap.xml and /fr.sitemap.xml.
+actions:
+  apisYmlCreated: true
+  apisListed: 0
+  openapiHarvested: false
+  reason: >-
+    No public self-serve developer portal, no downloadable OpenAPI/Swagger/GraphQL/
+    AsyncAPI definition, and no public Postman collection exist for Definity Financial
+    or any of its brands. The apis[] array is intentionally empty. Recording the
+    partner-gated absence accurately is the correct outcome for this carrier.

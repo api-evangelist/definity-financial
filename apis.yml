@@ -1,0 +1,59 @@
+aid: definity-financial
+url: https://raw.githubusercontent.com/api-evangelist/definity-financial/refs/heads/main/apis.yml
+name: Definity Financial
+kind: company
+description: >-
+  Definity Financial Corporation is a Canadian property and casualty insurance group
+  headquartered in Waterloo, Ontario and listed on the Toronto Stock Exchange (DFY).
+  It is the demutualized successor to Economical Mutual Insurance Company, founded in
+  1871 in Berlin (now Kitchener), Ontario; policyholders approved demutualization in
+  May 2021 and the company completed its IPO in November 2021, renaming the operating
+  carrier Definity Insurance Company. Definity underwrites personal and commercial
+  property, automobile, farm, and pet lines across Canada through four brands:
+  Economical (broker-distributed home, auto, farm and business insurance), Sonnet
+  (described by the company as the largest fully digital direct-to-consumer insurance
+  business in Canada), Family Insurance Solutions, and Petline/Petsecure (pet
+  insurance). It is one of the Big Few Canadian P&C carriers and reported roughly
+  $6.3B in gross written premiums on a trailing-twelve-month pro-forma basis
+  including its Travelers Canada acquisition. Its API posture is partner-gated and
+  honest to state plainly: Definity publishes no public, self-serve developer portal
+  and no downloadable OpenAPI, Swagger, GraphQL, or AsyncAPI definition on any
+  first-party host. Every developer-shaped subdomain of definityfinancial.com fails to
+  resolve, an api.definity.com host exists behind Imperva but answers HTTP 404 with an
+  empty body to every anonymous path including OAuth and OpenID discovery, and the
+  only reachable broker surface, broker.economical.com, is a Docebo learning
+  management system for broker training rather than an API reference. Its Vyne broker
+  digital platform and its broker connectivity are distributed through gated
+  intermediary channels, consistent with a Canadian market where OSFI supervises
+  prudentially, the provinces regulate conduct, and Consumer-Driven Banking excludes
+  insurance entirely so no open-insurance mandate forces a public API surface.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- Canada
+- Property and Casualty
+- Carrier
+- Underwriting
+- Claims
+- Broker
+- Pet Insurance
+- Direct to Consumer
+- Partner Gated
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.definityfinancial.com/
+- type: Website
+  url: https://www.economical.com/
+- type: Website
+  url: https://www.sonnet.ca/
+- type: Website
+  url: https://www.petsecure.com/
+- type: Postman
+  url: https://www.postman.com/definity-insurance
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
