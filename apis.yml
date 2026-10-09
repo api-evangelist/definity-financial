@@ -54,7 +54,10 @@ accessModel:
   onboarding: open
   trial: false
   try_now: false
-  public: true
+  public: false
+  gated: partner
+  gated_source:
+  - tag:Partner Gated
   label: Open access
   confidence: low
   source:
@@ -72,7 +75,6 @@ tags:
 - Claims
 - Pet Insurance
 - Direct to Consumer
-- Partner Gated
 - CSIO
 - Insurtech
 tags_raw:
@@ -84,7 +86,6 @@ tags_raw:
 - Claims
 - Pet Insurance
 - Direct to Consumer
-- Partner Gated
 - CSIO
 - Insurtech
 created: '2026-07-25'
@@ -170,3 +171,4 @@ maintainers:
   email: kin@apievangelist.com
 x-tags-removed:
 - Brokers
+- Partner Gated
